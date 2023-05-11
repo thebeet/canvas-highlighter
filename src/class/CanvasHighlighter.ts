@@ -68,6 +68,24 @@ class CanvasHighlighter implements ICanvasHighlighter {
     this.addRange(range)
   }
 
+  getRangeRect(range: IRange): { left: number, right: number, top: number, bottom: number } {
+    const result = { left: 0, top: 0, right: 0, bottom: 0 }
+    const rects = this.rangeFactory.createRects(range)
+
+    if (rects.length === 0) return result
+    result.top = rects[0].top
+    result.left = rects[0].left
+    result.right = rects[0].right
+    result.bottom = rects[0].bottom
+    rects.forEach(r => {
+      result.top = Math.min(result.top, r.top)
+      result.left = Math.min(result.left, r.left)
+      result.right = Math.max(result.right, r.right)
+      result.bottom = Math.max(result.bottom, r.bottom)
+    })
+    return result
+  }
+
   getAllRange(): IRange[] {
     return [...this.ranges]
   }
