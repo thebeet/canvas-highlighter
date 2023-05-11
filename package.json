@@ -1,5 +1,5 @@
 {
-  "name": "canvas-highlighter",
+  "name": "thebeet/canvas-highlighter",
   "version": "1.0.3",
   "description": "A lib for text highlighting by using Canvas.",
   "type": "module",
