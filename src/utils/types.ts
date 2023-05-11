@@ -68,6 +68,11 @@ export interface ICanvasHighlighter {
   updateRange(range: IRange): void
 
   /**
+   * 获取range当前绘制区域的位置（根据 id 判断）
+   */
+  getRangeRect(range: IRange): { left: number, right: number, top: number, bottom: number }
+
+  /**
    * 获取当前所有 range 的列表
    */
   getAllRange(): IRange[]
